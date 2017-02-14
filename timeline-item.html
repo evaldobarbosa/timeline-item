@@ -1,0 +1,112 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!--
+A simple timeline component
+
+Example:
+
+    <timeline-item>
+      <span class="header">07:30 AM</span>
+      <p class="header">Hello timeline-item</p>
+    </timeline-item>
+
+@demo demo/index.html
+-->
+
+<dom-module id="timeline-item">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 0px 8px;
+        background-color: white;
+        height: 100px;
+        /*outline: 1px dotted black;*/
+      }
+
+      :host > div.el {
+        @apply(--layout-horizontal);
+        height: 100px;
+        /*outline: 1px dotted blue;*/
+      }
+
+      :host > div.el > .content {
+        @apply(--layout-flex-3);
+      }
+
+      .content {
+        padding: 20px 8px 0px 16px;
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      .content ::content .header {
+        text-transform: uppercase;
+        color: #666;
+        line-height: 11px;
+        font-size: 12px;
+      }
+
+      .content ::content .text {
+        margin: 8px 0px;
+      }
+    </style>
+    <div class="el">
+      
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="56px">
+            <path fill="#01a09e" stroke-width="2" stroke="#ccc" d="M30 0 v800 56"/>
+            <circle cx="30" cy="40" r="12" fill="black" id="circle"/>
+          </svg>
+      
+      <div class="content">
+        <content></content>
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'timeline-item',
+      properties: {
+        status: {
+          type: Number,
+          reflectToAttribute: true,
+          notify: true,
+          observer: 'changeStatus'
+        },
+        color: {
+          type: String,
+          value: '#333'
+        }
+      },
+      changeStatus: function(status) {
+        switch (status) {
+          case 0:
+            this.color = '#b71c1c';
+            break;
+
+          case 1:
+            this.color = '#f44336';
+            break;
+
+          case 2:
+            this.color = '#CDDC39';
+            break;
+
+          case 3:
+            this.color = '#00796B';
+            break;
+
+          case 4:
+            this.color = '#283593';
+            break;
+
+          default:
+            this.color = '#333';
+        }
+
+        var circ = this.$.circle;
+        circ.setAttributeNS(null,'fill',this.color);
+      }
+    });
+  </script>
+</dom-module>
