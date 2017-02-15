@@ -2,6 +2,7 @@
   "name": "timeline-item",
   "description": "A simple timeline component",
   "main": "timeline-item.html",
+  "keyworkds": ["web-components","timeline","polymer"],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0"
   },
