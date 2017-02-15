@@ -2,11 +2,19 @@
 
 A simple timeline component
 
-Example:
+Example
+===
 
 ```
   <timeline-item>
     <span class="header">07:30 AM</span>
     <p class="header">Hello timeline-item</p>
   </timeline-item>
+```
+
+Installation
+===
+
+```
+bower install -S evaldobarbosa/timeline-item
 ```
